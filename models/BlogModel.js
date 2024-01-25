@@ -1,7 +1,7 @@
 // importamos la conexión de la BD
-import db from "../database/db";
+import db from "../database/db.js";
 // importamos Sequelize
-import { DataType, DataTypes, Sequelize } from "sequelize";
+import { DataTypes } from "sequelize";
 
 const BlogModel = db.define('blogs', {
   title: { type: DataTypes.STRING },
