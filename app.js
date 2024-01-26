@@ -18,9 +18,9 @@ try {
   console.log(`El error de conexión es: ${error}`);
 }
 
-app.get('/', (req, res) => {
+/* app.get('/', (req, res) => {
   res.send('Hola Mundo')
-})
+}) */
 
 app.listen(8000, () => {
   console.log('Server is running in http://localhost:8000/');
