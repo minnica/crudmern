@@ -1,11 +1,19 @@
 import express from 'express'
-import { createIngresos, deleteIngresos, getAllIngresos, getIngresos, updateIngresos } from '../controllers/BlogController.js'
+import {
+  createBank,
+  deleteBank,
+  getAllBanks,
+  getBank,
+  updateBank,
+} from '../controllers/banksController.js'
+
 const router = express.Router()
 
-router.get('/', getAllIngresos)
-router.get('/:id', getIngresos)
-router.post('/', createIngresos)
-router.put('/:id', updateIngresos)
-router.delete('/:id', deleteIngresos)
+// banks routes
+router.get('/banks', getAllBanks)
+router.get('/banks/:id', getBank)
+router.post('/banks/', createBank)
+router.put('/banks/:id', updateBank)
+router.delete('/banks/:id', deleteBank)
 
 export default router
