@@ -13,6 +13,13 @@ import {
   getCategory,
   updateCategory,
 } from '../controllers/categoriesController.js'
+import {
+  createTransaction,
+  deleteTransaction,
+  getAllTransactions,
+  getTransaction,
+  updateTransaction,
+} from '../controllers/transactionsController.js'
 
 const router = express.Router()
 
@@ -29,5 +36,12 @@ router.get('/categories/:id', getCategory)
 router.post('/categories/', createCategory)
 router.put('/categories/:id', updateCategory)
 router.delete('/categories/:id', deleteCategory)
+
+// transactions routes
+router.get('/transactions', getAllTransactions)
+router.get('/transactions/:id', getTransaction)
+router.post('/transactions/', createTransaction)
+router.put('/transactions/:id', updateTransaction)
+router.delete('/transactions/:id', deleteTransaction)
 
 export default router
