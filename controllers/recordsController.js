@@ -1,22 +1,17 @@
-// importamos el modelo 
-import BlogModel from "../models/BlogModel.js";
+import recordModel from "../models/recordModel.js";
 
-// Métodos para el CRUD
-
-// Mostrar todos los registros
-export const getAllBlogs = async (req, res) => {
+export const getAllRecords = async (req, res) => {
   try {
-    const blogs = await BlogModel.findAll()
+    const blogs = await recordModel.findAll()
     res.json(blogs)
   } catch (error) {
     res.json({ message: error.message })
   }
 }
 
-// Mostrar un registro
-export const getBlog = async (req, res) => {
+export const getRecord = async (req, res) => {
   try {
-    const blog = await BlogModel.findAll({
+    const blog = await recordModel.findAll({
       where: { id: req.params.id }
     })
     res.json(blog[0])
@@ -25,10 +20,9 @@ export const getBlog = async (req, res) => {
   }
 }
 
-// Crear un registro
-export const createBlog = async (req, res) => {
+export const createRecord = async (req, res) => {
   try {
-    await BlogModel.create(req.body)
+    await recordModel.create(req.body)
     res.json({
       "message": "Registro creado correctamente"
     })
@@ -37,10 +31,9 @@ export const createBlog = async (req, res) => {
   }
 }
 
-// Actualizar un registro
-export const updateBlog = async (req, res) => {
+export const updateRecord = async (req, res) => {
   try {
-    await BlogModel.update(req.body, {
+    await recordModel.update(req.body, {
       where: { id: req.params.id }
     })
     res.json({
@@ -51,10 +44,9 @@ export const updateBlog = async (req, res) => {
   }
 }
 
-// Eliminar un registro
-export const deleteBlog = async (req, res) => {
+export const deleteRecord = async (req, res) => {
   try {
-    await BlogModel.destroy({
+    await recordModel.destroy({
       where: { id: req.params.id }
     })
     res.json({

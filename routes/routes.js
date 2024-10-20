@@ -1,11 +1,11 @@
 import express from 'express'
-import { createBlog, deleteBlog, getAllBlogs, getBlog, updateBlog } from '../controllers/BlogController.js'
+import { createRecord, deleteRecord, getAllRecords, getRecord, updateRecord } from '../controllers/recordsController.js'
 const router = express.Router()
 
-router.get('/', getAllBlogs)
-router.get('/:id', getBlog)
-router.post('/', createBlog)
-router.put('/:id', updateBlog)
-router.delete('/:id', deleteBlog)
+router.get('/', getAllRecords)
+router.get('/:id', getRecord)
+router.post('/', createRecord)
+router.put('/:id', updateRecord)
+router.delete('/:id', deleteRecord)
 
 export default router
