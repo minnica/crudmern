@@ -1,8 +1,18 @@
-import recordModel from "../models/recordModel.js";
+import { paymentTypeModel, dailyPurchasesModel, personModel } from '../models/index.js';
 
 export const getAllRecords = async (req, res) => {
   try {
-    const blogs = await recordModel.findAll()
+    const blogs = await dailyPurchasesModel.findAll({
+      include: [{
+        model: paymentTypeModel,
+        attributes: ['payment_type_name']
+      },
+      {
+        model: personModel,
+        attributes: ['person_name']
+      }
+    ]
+    })
     res.json(blogs)
   } catch (error) {
     res.json({ message: error.message })
@@ -11,7 +21,7 @@ export const getAllRecords = async (req, res) => {
 
 export const getRecord = async (req, res) => {
   try {
-    const blog = await recordModel.findAll({
+    const blog = await dailyPurchasesModel.findAll({
       where: { id: req.params.id }
     })
     res.json(blog[0])
@@ -22,7 +32,7 @@ export const getRecord = async (req, res) => {
 
 export const createRecord = async (req, res) => {
   try {
-    await recordModel.create(req.body)
+    await dailyPurchasesModel.create(req.body)
     res.json({
       "message": "Registro creado correctamente"
     })
@@ -33,7 +43,7 @@ export const createRecord = async (req, res) => {
 
 export const updateRecord = async (req, res) => {
   try {
-    await recordModel.update(req.body, {
+    await dailyPurchasesModel.update(req.body, {
       where: { id: req.params.id }
     })
     res.json({
@@ -46,7 +56,7 @@ export const updateRecord = async (req, res) => {
 
 export const deleteRecord = async (req, res) => {
   try {
-    await recordModel.destroy({
+    await dailyPurchasesModel.destroy({
       where: { id: req.params.id }
     })
     res.json({

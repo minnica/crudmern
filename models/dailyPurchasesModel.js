@@ -1,7 +1,8 @@
 import db from "../database/db.js";
 import { DataTypes } from "sequelize";
+import { paymentTypeModel, personModel, categoryModel } from '../models/index.js';
 
-const recordModel = db.define('daily_purchases', {
+const dailyPurchasesModel = db.define('daily_purchases', {
   id_daily_purchases: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -20,4 +21,8 @@ const recordModel = db.define('daily_purchases', {
   paid: { type: DataTypes.BOOLEAN }
 })
 
-export default recordModel
+dailyPurchasesModel.belongsTo(paymentTypeModel, { foreignKey: 'id_payment_type' })
+dailyPurchasesModel.belongsTo(personModel, { foreignKey: 'id_person' })
+dailyPurchasesModel.belongsTo(categoryModel, { foreignKey: 'id_category' })
+
+export default dailyPurchasesModel
